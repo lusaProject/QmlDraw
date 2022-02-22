@@ -1,0 +1,28 @@
+<RCC>
+    <qresource prefix="/">
+        <file>qml/main.qml</file>
+        <file>res/ddc_brush tool_normal_48px.svg</file>
+        <file>res/ddc_choose tools_normal_48px.svg</file>
+        <file>res/ddc_eraser tool_normal_48px.svg</file>
+        <file>res/ddc_hexagon tool_normal_48px.svg</file>
+        <file>res/ddc_line tool_normal_48px.svg</file>
+        <file>res/ddc_rectangle tool_normal_48px.svg</file>
+        <file>res/ddc_round tool_normal_48px.svg</file>
+        <file>res/ddc_screenshot tool_normal_48px.svg</file>
+        <file>res/ddc_smudge tool_48px.svg</file>
+        <file>res/ddc_smudge tool_normal_48px.svg</file>
+        <file>res/ddc_star tool_normal_48px.svg</file>
+        <file>res/ddc_text tool_normal_48px.svg</file>
+        <file>res/ddc_triangle tool_normal_48px.svg</file>
+        <file>res/notify_success_32px.svg</file>
+        <file>res/warning_new_32px.svg</file>
+        <file>qml/AttributeWidget.qml</file>
+        <file>qml/CanvasWidget.qml</file>
+        <file>qml/ColorSquare.qml</file>
+        <file>qml/PickerWidget.qml</file>
+        <file>qml/MainWindow.qml</file>
+        <file>qml/DrawTools.qml</file>
+        <file>qml/GlobalVar.qml</file>
+        <file>res/ddc_ellipse_normal_36px.svg</file>
+    </qresource>
+</RCC>
