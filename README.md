@@ -3,7 +3,4 @@
 
 
 
-#### 功能演示如下
-
-![darw](/home/lusa/KCode/QmlDraw/darw.gif)
-
+#### 功能演示如下darw.gif
