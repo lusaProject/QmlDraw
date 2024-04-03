@@ -1,10 +1,10 @@
-import QtQuick 2.12
-import QtQuick.Window 2.12
-import QtQuick.Controls 2.12
+import QtQuick
+import QtQuick.Window
+import QtQuick.Controls
 
 Window {
     id: root
-    title: qsTr("画板")
+    title: qsTr("  ")
 
     function activateWindow()
     {
@@ -12,17 +12,13 @@ Window {
         root.raise();
     }
 
-    width: screen.width
-    height: screen.height
+    width: 1200
+    height: 800
     visible: true
+    visibility: Window.Maximized
 
     MainWindow{
         id: mainWindow
-    }
-
-    StackView {
-        id: stackView
-        initialItem: mainWindow
         anchors.fill: parent
     }
 
@@ -30,9 +26,4 @@ Window {
         id: global
     }
 }
-
-
-
-
-
 

@@ -1,6 +1,6 @@
-import QtQuick 2.12
-import QtQuick.Controls 2.12
-import QtQuick.Layouts 1.12
+import QtQuick
+import QtQuick.Controls
+import QtQuick.Layouts
 
 Rectangle{
     id: root
@@ -23,12 +23,10 @@ Rectangle{
     CanvasWidget{
         id : paintArea
         fillStyles: global.fillColor
-        strokeStyles: global.strokeColor
+        strokeStyles: global.fillColor
         globalAlphas: colorWidget.transparency
         lwidth: attributeWidget.lwidth
         pentype: painttool.currentPenType
-        lineDashs: attributeWidget.lineDash
-        radius: attributeWidget.radius
 
          anchors{
              left: root.left;

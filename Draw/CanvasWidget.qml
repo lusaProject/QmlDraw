@@ -1,34 +1,29 @@
-import QtQuick 2.12
-import QtQuick.Controls 2.12
-import QtQuick.Layouts 1.12
+import QtQuick
+import QtQuick.Controls
+import QtQuick.Layouts
 
 Rectangle{
     id: root
-
-    width: 960
-    height: 640
 
     property color fillStyles
     property color strokeStyles
     property real globalAlphas
 
     property int pentype
-    property int radius
     property real lwidth
-    property bool lineDashs
-
-    property real lastX
-    property real lastY
 
     property real startX
     property real startY
+
+    property real lastX
+    property real lastY
 
     property real endX
     property real endY
 
     function clearScreen(){
-        canvas.ctx.clearRect(0, 0, canvas.width, canvas.height)
         draw.ctx.clearRect(0, 0, draw.width, draw.height)
+        canvas.ctx.clearRect(0, 0, canvas.width, canvas.height)
         draw.requestPaint()
         canvas.requestPaint()
      }
@@ -38,8 +33,6 @@ Rectangle{
         ctx.lineJoin = "round"
         ctx.lineCap = "round"
         ctx.globalCompositeOperation = "copy"
-        //ctx.setLineDash([2,8])
-        ctx.setLineDash(lineDashs ? []: [2,8])
 
         ctx.fillStyle = fillStyles
         ctx.strokeStyle = strokeStyles
@@ -61,7 +54,6 @@ Rectangle{
                 ctx.fillStyle = "transparent"
                 ctx.strokeStyle = "transparent"
                 ctx.globalAlpha = "transparent"
-                ctx.lineWidth = 50
 
                 ctx.beginPath()
                 ctx.moveTo(lastX,lastY)
@@ -73,7 +65,7 @@ Rectangle{
 
             case 3:
                 ctx.beginPath()
-                ctx.roundedRect(startX, startY, area.mouseX - startX, area.mouseY - startY, radius, radius)
+                ctx.roundedRect(startX, startY, area.mouseX - startX, area.mouseY - startY, 0, 0)
                 ctx.stroke()
                 ctx.fill()
             break;
@@ -129,7 +121,7 @@ Rectangle{
 
     Rectangle{
         anchors.fill: draw
-        border.color: "#000666"
+        border.color: "#F0F0F0"
         border.width: 2;
     }
 
@@ -157,13 +149,6 @@ Rectangle{
             id:area;
             anchors.fill: parent;
 
-            Image {
-                id: img
-                width: 48
-                height: 48
-                visible: false
-            }
-
             onPressed: {
                 colorWidget.visible = false
 
@@ -172,76 +157,18 @@ Rectangle{
 
                 startX = mouseX
                 startY = mouseY
-
-                switch (pentype)
-                {
-                    case 1:
-                      img.visible = true
-                      area.cursorShape = Qt.BlankCursor
-                      img.source = "qrc:/res/ddc_brush tool_normal_48px.svg"
-                    break;
-
-                    case 2:
-                        img.visible = true
-                        area.cursorShape = Qt.BlankCursor
-                        img.source  = "qrc:/res/ddc_eraser tool_normal_48px.svg"
-                    break;
-
-                    case 3:
-                        img.visible = true
-                        area.cursorShape = Qt.BlankCursor
-                        img.source  = "qrc:/res/ddc_rectangle tool_normal_48px.svg"
-                    break;
-
-                    case 4:
-                        img.visible = true
-                        area.cursorShape = Qt.BlankCursor
-                        img.source  = "qrc:/res/ddc_triangle tool_normal_48px.svg"
-                    break;
-
-                    case 5:
-                        img.visible = true
-                        area.cursorShape = Qt.BlankCursor
-                        img.source  = "qrc:/res/ddc_line tool_normal_48px.svg"
-                    break;
-
-                    case 6:
-                        img.visible = true
-                        area.cursorShape = Qt.BlankCursor
-                        img.source  = "qrc:/res/ddc_round tool_normal_48px.svg"
-                    break;
-
-                    case 7:
-                        img.visible = true
-                        area.cursorShape = Qt.BlankCursor
-                        img.source  = "qrc:/res/ddc_ellipse_normal_36px.svg"
-                    break;
-
-                    default:
-                        img.visible = false
-                        area.cursorShape = Qt.ArrowCursor
-                        console.warn("... type error....")
-                }
-
             }
 
             onReleased: {
-                //console.warn("mouseX :" + mouseX  + "mouseY :" + mouseY)
                 endX = mouseX
                 endY = mouseY
 
-                 canvas.ctx.clearRect(0, 0, canvas.width, canvas.height)
-                 canvas.requestPaint()
-                 draw.requestPaint()
-
-                img.visible = false
-                area.cursorShape = Qt.ArrowCursor
+                canvas.ctx.clearRect(0, 0, canvas.width, canvas.height)
+                canvas.requestPaint()
+                draw.requestPaint()
             }
 
             onPositionChanged: {
-                img.x = mouseX - (img.width * 0.5  )
-                img.y = mouseY - (img.height * 0.5 )
-
                 if(pentype > 2){
                     canvas.ctx.clearRect(0, 0, canvas.width, canvas.height)
                     canvas.requestPaint()

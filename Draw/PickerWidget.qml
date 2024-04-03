@@ -1,6 +1,6 @@
-import QtQuick 2.12
-import QtQuick.Controls 2.12
-import QtQuick.Layouts 1.12
+import QtQuick
+import QtQuick.Controls
+import QtQuick.Layouts
 
 Rectangle{
         id : root
@@ -50,7 +50,7 @@ Rectangle{
               Layout.preferredWidth: 300
 
               Label{
-                text: "不透明度"
+                text: "Alpha"
               }
 
               Slider {
@@ -60,7 +60,7 @@ Rectangle{
                    to: 1
                    Layout.fillWidth: true
                    onValueChanged: {
-                         console.warn("value" + value)
+                       // console.warn("value" + value)
                    }
                }
 
@@ -73,7 +73,7 @@ Rectangle{
                spacing: 4
 
                Label{
-                   text: "   颜   色    #"
+                   text: "Color   #"
                }
 
                TextInput{
@@ -81,16 +81,15 @@ Rectangle{
                 text: "FFFFFF"
                 verticalAlignment: TextInput.AlignHCenter
                 Layout.fillWidth: true
-                selectByMouse: true
                }
 
                ToolButton{
                 id: picker
-                text: "选择"
+                text: "choose"
                 background: Rectangle{
                     id : pickerBG
-                    color : "#E3E3E3"
-                    radius: 2
+                    color : "#F0F0F0"
+                    radius: 5
                 }
 
                 onClicked: {
